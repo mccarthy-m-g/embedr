@@ -32,15 +32,10 @@ embed_audio <- function(src,
                         attribute = c("controls", "autoplay", "loop", "muted", "preload"),
                         placeholder = "") {
   # check if src has a valid media file extension
-  if (!is.audio(src)) {
-    stop("`src` does not end with a valid audio file extension; ",
-         "valid extensions are .mp3, .ogg, and .wav")
-  }
+  is.audio(src)
   # check if the audio sources exist
-  if (!is.local(src) | !is.hosted(src)) {
-    stop("The audio source(s) do not exist; ",
-         "please check that the path(s) or URL(s) are correct.")
-  }
+  is.local(src)
+  is.hosted(src)
   # check whether default values should be used for type or attribute
   if(missing(type)) {type <- "mpeg"}
   if(missing(attribute)) {attribute <- "controls"}
