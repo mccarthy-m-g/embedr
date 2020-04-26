@@ -6,6 +6,9 @@
 \usage{
 is.hosted(x)
 }
+\arguments{
+\item{x}{A character vector.}
+}
 \description{
 Return strings with a URL scheme
 }

@@ -6,6 +6,9 @@
 \usage{
 is.audio(x)
 }
+\arguments{
+\item{x}{A character vector.}
+}
 \description{
 Match string for audio suffix
 }

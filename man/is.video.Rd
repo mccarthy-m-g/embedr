@@ -6,6 +6,9 @@
 \usage{
 is.video(x)
 }
+\arguments{
+\item{x}{A character vector.}
+}
 \description{
 Match string for video suffix
 }

@@ -6,6 +6,10 @@
 \usage{
 is.local(x)
 }
+\arguments{
+\item{x}{A character vector.}
+}
 \description{
-Return strings without a URL scheme
+Given a character vector, returns a logical indicating whether the
+paths in the vector point to existing local files.
 }

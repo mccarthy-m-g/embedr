@@ -6,6 +6,10 @@
 \usage{
 is.url(x)
 }
+\arguments{
+\item{x}{A character vector.}
+}
 \description{
-Match string for URL prefix
+Given a character vector, returns a logical vector indicating
+which elements have a URL scheme.
 }
