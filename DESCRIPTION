@@ -1,0 +1,22 @@
+Package: embedr
+License: MIT + file LICENSE
+Version: 0.1.0
+Type: Package
+Title: Embed Multimedia Files in HTML Documents
+Description: A wrapper for the `<audio>` and `<video>` HTML commands in R.
+    It allows you to embed multimedia files in HTML documents generated 
+    by R using R code instead of raw HTML. Its functions also include
+    arguments for including placeholder text instead of embedded multimedia
+    files when generating non-HTML documents in R.
+Authors@R: person("Michael", "McCarthy", email = "m.mccarthy1624@gmail.com",
+                  role = c("aut", "cre"))
+URL: https://github.com/mccarthy-m-g/embedr
+BugReports: https://github.com/mccarthy-m-g/embedr/issues
+Imports:
+    htmltools,
+    knitr,
+    RCurl,
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.0

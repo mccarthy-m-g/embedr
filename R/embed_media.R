@@ -1,0 +1,157 @@
+#' Embed audio in R Markdown documents
+#'
+#' `embed_audio()` provides a standard way to embed audio in R Markdown
+#' documents when the output format is HTML, and to print placeholder text
+#' when the output format is not HTML.
+#'
+#' `embed_audio()` is a wrapper for the HTML5 `<audio>` element that prints
+#' HTML `<audio>` code in HTML documents built by R Markdown and placeholder
+#' text in non-HTML documents built by R Markdown. This function may be useful
+#' for conditional output that depends on the output format. For example, you
+#' may embed audio in an R Markdown document when the output format is HTML,
+#' and print placeholder text when the output format is LaTeX.
+#'
+#' The function determines output format using [knitr::is_html_output()]. By
+#' default, these formats are considered as HTML formats: `c('markdown',
+#' 'epub', 'html', 'html5', 'revealjs', 's5', 'slideous', 'slidy')`.
+#'
+#' @param src A path or URL to the media file.
+#' @param type The type of media file specified in `src`.
+#' @param attribute A character vector specifying which attributes to use. An
+#'   empty character vector "" can be used if no attributes are desired.
+#' @param placeholder The placeholder text to use when the output format is
+#'   not HTML.
+#' @return If `knitr::is_html_output()` == `TRUE`, returns HTML `<video>` code.
+#'   If `knitr::is_html_output()` = `FALSE`, returns placeholder text.
+#' @note This function is supposed to be used in R code chunks or inline R code
+#'   expressions. You are recommended to use forward slashes (/) as path
+#'   separators instead of backslashes in the file paths.
+#' @export
+embed_audio <- function(src,
+                        type = c("mpeg", "ogg", "wav"),
+                        attribute = c("controls", "autoplay", "loop", "muted", "preload"),
+                        placeholder = "") {
+  # check if src has a valid media file extension
+  if (!is.audio(src)) {
+    stop("`src` does not end with a valid audio file extension; ",
+         "valid extensions are .mp3, .ogg, and .wav")
+  }
+  # check if the audio sources exist
+  if (!is.local(src) | !is.hosted(src)) {
+    stop("The audio source(s) do not exist; ",
+         "please check that the path(s) or URL(s) are correct.")
+  }
+  # check whether default values should be used for type or attribute
+  if(missing(type)) {type <- "mpeg"}
+  if(missing(attribute)) {attribute <- "controls"}
+  # evaluate choices
+  type <- match.arg(type,
+                    c("mpeg", "ogg", "wav"),
+                    several.ok = TRUE)
+  attribute <- match.arg(attribute,
+                         c("controls", "autoplay", "loop", "muted", "preload"),
+                         several.ok = TRUE)
+  # collapse attribute choices to a character string
+  attribute <- paste(attribute, sep = " ", collapse = " ")
+  # compare length of src and type character vectors
+  if (length(src) != length(type)) {
+    message("Arguments `src` and `type` are different lengths; ",
+            "recycling the shorter vector.")
+  }
+  # print output
+  if (knitr::is_html_output()) {
+    # open <audio> tag
+    audio <- sprintf("<audio %1$s>", attribute)
+    # create <source> strings from vectors, then collapse to single string
+    audio_source <- paste(sprintf("<source src='%1$s' type='audio/%2$s'>",
+                                  src, type), sep = "", collapse = "")
+    # print the completed HTML <audio> output
+    htmltools::HTML(audio, audio_source,
+                    "Your browser does not support the audio tag; ",
+                    "for browser support, please see: ",
+                    "https://www.w3schools.com/tags/tag_audio.asp",
+                    "</audio>")
+  } else htmltools::HTML(placeholder)
+}
+
+#' Embed video in R Markdown documents
+#'
+#' `embed_video()` provides a standard way to embed video in R Markdown
+#' documents when the output format is HTML, and to print placeholder text
+#' when the output format is not HTML.
+#'
+#' `embed_video()` is a wrapper for the HTML5 `<video>` element that prints
+#' HTML `<video>` code in HTML documents built by R Markdown and placeholder
+#' text in non-HTML documents built by R Markdown. This function may be useful
+#' for conditional output that depends on the output format. For example, you
+#' may embed video in an R Markdown document when the output format is HTML,
+#' and print placeholder text when the output format is LaTeX.
+#'
+#' The function determines output format using [knitr::is_html_output()]. By
+#' default, these formats are considered as HTML formats: `c('markdown',
+#' 'epub', 'html', 'html5', 'revealjs', 's5', 'slideous', 'slidy')`.
+#'
+#' @inheritParams embed_audio
+#' @param width The width of the video, in pixels.
+#' @param height The height of the video, in pixels.
+#' @note This function is supposed to be used in R code chunks or inline R code
+#'   expressions. You are recommended to use forward slashes (/) as path
+#'   separators instead of backslashes in the file paths.
+#' @export
+embed_video <- function(src,
+                        type = c("mp4", "webm", "ogg"),
+                        width = "320",
+                        height = "240",
+                        attribute = c("controls", "autoplay", "loop", "muted", "preload"),
+                        thumbnail = NULL,
+                        placeholder = "") {
+  # check if src has a valid media file extension
+  if (!is.video(src)) {
+    stop("`src` does not end with a valid video file extension; ",
+         "valid extensions are .mp4, .webm, and .ogg")
+  }
+  # check if the video sources exist
+  if (!is.local(src) | !is.hosted(src)) {
+    stop("The video source(s) do not exist; ",
+         "please check that the path(s) or URL(s) are correct.")
+  }
+  # check whether default values should be used for type or attribute
+  if(missing(type)) {type <- "mp4"}
+  if(missing(attribute)) {attribute <- "controls"}
+  # evaluate choices
+  type <- match.arg(type,
+                    c("mp4", "webm", "ogg"),
+                    several.ok = TRUE)
+  attribute <- match.arg(attribute,
+                         c("controls", "autoplay", "loop", "muted", "preload"),
+                         several.ok = TRUE)
+  # collapse attribute choices to a character string
+  attribute <- paste(attribute, sep = " ", collapse = " ")
+  # compare length of src and type character vectors
+  if (length(src) != length(type)) {
+    message("Vectors `src` and `type` are different lengths; ",
+            "recycling the shorter vector.")
+  }
+  # print output
+  if (knitr::is_html_output()) {
+    # decide whether to include thumbnail
+    if (missing(thumbnail)) {
+      # no thumbnail
+      video <- sprintf("<video width='%1$s' height='%2$s' %3$s>",
+                       width, height, attribute)
+    } else {
+      # thumbnail
+      video <- sprintf("<video width='%1$s' height='%2$s' %3$s poster='%4$s'>",
+                       width, height, attribute, thumbnail)
+    }
+    # create <source> strings from vectors, then collapse to single string
+    video_source <- paste(sprintf("<source src='%1$s' type='audio/%2$s'>",
+                                  src, type), sep = "", collapse = "")
+    # print the completed HTML <video> output
+    htmltools::HTML(video, video_source,
+                    "Your browser does not support the video tag; ",
+                    "for browser support, please see: ",
+                    "https://www.w3schools.com/tags/tag_video.asp",
+                    "</video>")
+  } else htmltools::HTML(placeholder)
+}
