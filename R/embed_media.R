@@ -101,15 +101,10 @@ embed_video <- function(src,
                         thumbnail = NULL,
                         placeholder = "") {
   # check if src has a valid media file extension
-  if (!is.video(src)) {
-    stop("`src` does not end with a valid video file extension; ",
-         "valid extensions are .mp4, .webm, and .ogg")
-  }
+  is.video(src)
   # check if the video sources exist
-  if (!is.local(src) | !is.hosted(src)) {
-    stop("The video source(s) do not exist; ",
-         "please check that the path(s) or URL(s) are correct.")
-  }
+  is.local(src)
+  is.hosted(src)
   # check whether default values should be used for type or attribute
   if(missing(type)) {type <- "mp4"}
   if(missing(attribute)) {attribute <- "controls"}
