@@ -29,6 +29,10 @@ embed_video(
 \item{placeholder}{The placeholder text to use when the output format is
 not HTML.}
 }
+\value{
+If \code{knitr::is_html_output()} is \code{TRUE}, returns HTML \verb{<video>} code.
+If \code{knitr::is_html_output()} is \code{FALSE}, returns placeholder text.
+}
 \description{
 \code{embed_video()} provides a standard way to embed video in R Markdown
 documents when the output format is HTML, and to print placeholder text

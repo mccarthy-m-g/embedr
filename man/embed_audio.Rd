@@ -23,8 +23,8 @@ embed_audio(
 not HTML.}
 }
 \value{
-If \code{knitr::is_html_output()} == \code{TRUE}, returns HTML \verb{<video>} code.
-If \code{knitr::is_html_output()} = \code{FALSE}, returns placeholder text.
+If \code{knitr::is_html_output()} is \code{TRUE}, returns HTML \verb{<audio>} code.
+If \code{knitr::is_html_output()} is \code{FALSE}, returns placeholder text.
 }
 \description{
 \code{embed_audio()} provides a standard way to embed audio in R Markdown
