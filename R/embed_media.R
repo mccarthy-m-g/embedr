@@ -21,8 +21,8 @@
 #'   "none" can be used if no attributes are desired.
 #' @param placeholder The placeholder text to use when the output format is
 #'   not HTML.
-#' @return If `knitr::is_html_output()` == `TRUE`, returns HTML `<video>` code.
-#'   If `knitr::is_html_output()` = `FALSE`, returns placeholder text.
+#' @return If `knitr::is_html_output()` is `TRUE`, returns HTML `<audio>` code.
+#'   If `knitr::is_html_output()` is `FALSE`, returns placeholder text.
 #' @note This function is supposed to be used in R code chunks or inline R code
 #'   expressions. You are recommended to use forward slashes (/) as path
 #'   separators instead of backslashes in the file paths.
@@ -93,6 +93,8 @@ embed_audio <- function(src,
 #' @inheritParams embed_audio
 #' @param width The width of the video, in pixels.
 #' @param height The height of the video, in pixels.
+#' @return If `knitr::is_html_output()` is `TRUE`, returns HTML `<video>` code.
+#'   If `knitr::is_html_output()` is `FALSE`, returns placeholder text.
 #' @note This function is supposed to be used in R code chunks or inline R code
 #'   expressions. You are recommended to use forward slashes (/) as path
 #'   separators instead of backslashes in the file paths.
