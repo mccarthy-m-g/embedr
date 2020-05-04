@@ -10,5 +10,6 @@ is.video(x)
 \item{x}{A character vector.}
 }
 \description{
-Match string for video suffix
+Given a character vector, returns a logical vector indicating
+which elements have a valid video file extension.
 }

@@ -10,5 +10,6 @@ is.audio(x)
 \item{x}{A character vector.}
 }
 \description{
-Match string for audio suffix
+Given a character vector, returns a logical vector indicating
+which elements have a valid audio file extension.
 }

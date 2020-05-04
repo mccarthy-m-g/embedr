@@ -45,6 +45,9 @@ is.local <- function(x) {
 
 #' Return strings with a URL scheme
 #'
+#' Given a character vector, returns a logical indicating whether the
+#' URLs in the vector respond without error.
+#'
 #' @param x A character vector.
 is.hosted <- function(x) {
   # check if paths have a URL scheme
@@ -77,6 +80,9 @@ is.hosted <- function(x) {
 
 #' Match string for audio suffix
 #'
+#' Given a character vector, returns a logical vector indicating
+#' which elements have a valid audio file extension.
+#'
 #' @param x A character vector.
 is.audio <- function(x) {
   # check if paths have a valid media file extension
@@ -100,6 +106,9 @@ is.audio <- function(x) {
 }
 
 #' Match string for video suffix
+#'
+#' Given a character vector, returns a logical vector indicating
+#' which elements have a valid video file extension.
 #'
 #' @param x A character vector.
 is.video <- function(x) {

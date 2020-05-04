@@ -10,5 +10,6 @@ is.hosted(x)
 \item{x}{A character vector.}
 }
 \description{
-Return strings with a URL scheme
+Given a character vector, returns a logical indicating whether the
+URLs in the vector respond without error.
 }
