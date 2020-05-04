@@ -163,7 +163,7 @@ embed_video <- function(src,
                        width, height, attribute)
     }
     # create <source> strings from vectors, then collapse to single string
-    video_source <- paste(sprintf("<source src='%1$s' type='audio/%2$s'>",
+    video_source <- paste(sprintf("<source src='%1$s' type='video/%2$s'>",
                                   src, type), sep = "", collapse = "")
     # print the completed HTML <video> output
     htmltools::HTML(video, video_source,
