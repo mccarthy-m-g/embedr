@@ -19,6 +19,9 @@
 #' @param type The type of media file specified in `src`.
 #' @param attribute A character vector specifying which attributes to use.
 #'   "none" can be used if no attributes are desired.
+#' @param id A character string specifying a unique ID for the element.
+#'   Can be used by CSS or JavaScript to perform certain tasks for
+#'   the element with the specific ID.
 #' @param placeholder The placeholder text to use when the output format is
 #'   not HTML.
 #' @return If `knitr::is_html_output()` is `TRUE`, returns HTML `<audio>` code.
@@ -31,6 +34,7 @@ embed_audio <- function(src,
                         type = c("mpeg", "ogg", "wav"),
                         attribute = c("controls", "autoplay", "loop",
                                       "muted", "preload", "none"),
+                        id = "",
                         placeholder = "") {
   # check if src has a valid media file extension
   is.audio(src)
@@ -60,7 +64,11 @@ embed_audio <- function(src,
   # print output
   if (knitr::is_html_output()) {
     # open <audio> tag
-    audio <- sprintf("<audio %1$s>", attribute)
+    if (missing(id)) {
+      audio <- sprintf("<audio %1$s>", attribute)
+    } else {
+      audio <- sprintf("<audio id='%2$s' %1$s>", attribute, id)
+    }
     # create <source> strings from vectors, then collapse to single string
     audio_source <- paste(sprintf("<source src='%1$s' type='audio/%2$s'>",
                                   src, type), sep = "", collapse = "")
@@ -106,6 +114,7 @@ embed_video <- function(src,
                         attribute = c("controls", "autoplay", "loop",
                                       "muted", "preload", "none"),
                         thumbnail = NULL,
+                        id = "",
                         placeholder = "") {
   # check if src has a valid media file extension
   is.video(src)
@@ -134,15 +143,24 @@ embed_video <- function(src,
   }
   # print output
   if (knitr::is_html_output()) {
-    # decide whether to include thumbnail
-    if (missing(thumbnail)) {
-      # no thumbnail
-      video <- sprintf("<video width='%1$s' height='%2$s' %3$s>",
-                       width, height, attribute)
-    } else {
+    # decide whether to include thumbnail and id
+    if (!missing(thumbnail) & !missing(id)) {
+      # thumbnail and id
+      video <- sprintf("<video id='%5$s' width='%1$s'
+                       height='%2$s' %3$s poster='%4$s'>",
+                       width, height, attribute, thumbnail, id)
+    } else if (!missing(thumbnail) & missing(id)) {
       # thumbnail
       video <- sprintf("<video width='%1$s' height='%2$s' %3$s poster='%4$s'>",
                        width, height, attribute, thumbnail)
+    } else if (missing(thumbnail) & !missing(id)) {
+      # id
+      video <- sprintf("<video id='%4$s' width='%1$s' height='%2$s' %3$s>",
+                       width, height, attribute, id)
+    } else {
+      # no thumbnail or id
+      video <- sprintf("<video width='%1$s' height='%2$s' %3$s>",
+                       width, height, attribute)
     }
     # create <source> strings from vectors, then collapse to single string
     video_source <- paste(sprintf("<source src='%1$s' type='audio/%2$s'>",

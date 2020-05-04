@@ -11,6 +11,7 @@ embed_video(
   height = "240",
   attribute = c("controls", "autoplay", "loop", "muted", "preload", "none"),
   thumbnail = NULL,
+  id = "",
   placeholder = ""
 )
 }
@@ -25,6 +26,10 @@ embed_video(
 
 \item{attribute}{A character vector specifying which attributes to use.
 "none" can be used if no attributes are desired.}
+
+\item{id}{A character string specifying a unique ID for the element.
+Can be used by CSS or JavaScript to perform certain tasks for
+the element with the specific ID.}
 
 \item{placeholder}{The placeholder text to use when the output format is
 not HTML.}

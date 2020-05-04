@@ -8,6 +8,7 @@ embed_audio(
   src,
   type = c("mpeg", "ogg", "wav"),
   attribute = c("controls", "autoplay", "loop", "muted", "preload", "none"),
+  id = "",
   placeholder = ""
 )
 }
@@ -18,6 +19,10 @@ embed_audio(
 
 \item{attribute}{A character vector specifying which attributes to use.
 "none" can be used if no attributes are desired.}
+
+\item{id}{A character string specifying a unique ID for the element.
+Can be used by CSS or JavaScript to perform certain tasks for
+the element with the specific ID.}
 
 \item{placeholder}{The placeholder text to use when the output format is
 not HTML.}
