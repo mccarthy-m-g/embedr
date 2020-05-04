@@ -17,8 +17,8 @@
 #'
 #' @param src A path or URL to the media file.
 #' @param type The type of media file specified in `src`.
-#' @param attribute A character vector specifying which attributes to use. An
-#'   empty character vector "" can be used if no attributes are desired.
+#' @param attribute A character vector specifying which attributes to use.
+#'   "none" can be used if no attributes are desired.
 #' @param placeholder The placeholder text to use when the output format is
 #'   not HTML.
 #' @return If `knitr::is_html_output()` == `TRUE`, returns HTML `<video>` code.
@@ -29,7 +29,8 @@
 #' @export
 embed_audio <- function(src,
                         type = c("mpeg", "ogg", "wav"),
-                        attribute = c("controls", "autoplay", "loop", "muted", "preload"),
+                        attribute = c("controls", "autoplay", "loop",
+                                      "muted", "preload", "none"),
                         placeholder = "") {
   # check if src has a valid media file extension
   is.audio(src)
@@ -44,10 +45,13 @@ embed_audio <- function(src,
                     c("mpeg", "ogg", "wav"),
                     several.ok = TRUE)
   attribute <- match.arg(attribute,
-                         c("controls", "autoplay", "loop", "muted", "preload"),
+                         c("controls", "autoplay", "loop",
+                           "muted", "preload", "none"),
                          several.ok = TRUE)
   # collapse attribute choices to a character string
   attribute <- paste(attribute, sep = " ", collapse = " ")
+  # make attribute empty if "none" is in the character string
+  if (all(grepl("none", attribute))) {attribute <- ""}
   # compare length of src and type character vectors
   if (length(src) != length(type)) {
     message("Arguments `src` and `type` are different lengths; ",
@@ -97,7 +101,8 @@ embed_video <- function(src,
                         type = c("mp4", "webm", "ogg"),
                         width = "320",
                         height = "240",
-                        attribute = c("controls", "autoplay", "loop", "muted", "preload"),
+                        attribute = c("controls", "autoplay", "loop",
+                                      "muted", "preload", "none"),
                         thumbnail = NULL,
                         placeholder = "") {
   # check if src has a valid media file extension
@@ -113,10 +118,13 @@ embed_video <- function(src,
                     c("mp4", "webm", "ogg"),
                     several.ok = TRUE)
   attribute <- match.arg(attribute,
-                         c("controls", "autoplay", "loop", "muted", "preload"),
+                         c("controls", "autoplay", "loop",
+                           "muted", "preload", "none"),
                          several.ok = TRUE)
   # collapse attribute choices to a character string
   attribute <- paste(attribute, sep = " ", collapse = " ")
+  # make attribute empty if "none" is in the character string
+  if (all(grepl("none", attribute))) {attribute <- ""}
   # compare length of src and type character vectors
   if (length(src) != length(type)) {
     message("Vectors `src` and `type` are different lengths; ",

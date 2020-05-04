@@ -7,7 +7,7 @@
 embed_audio(
   src,
   type = c("mpeg", "ogg", "wav"),
-  attribute = c("controls", "autoplay", "loop", "muted", "preload"),
+  attribute = c("controls", "autoplay", "loop", "muted", "preload", "none"),
   placeholder = ""
 )
 }
@@ -16,8 +16,8 @@ embed_audio(
 
 \item{type}{The type of media file specified in \code{src}.}
 
-\item{attribute}{A character vector specifying which attributes to use. An
-empty character vector "" can be used if no attributes are desired.}
+\item{attribute}{A character vector specifying which attributes to use.
+"none" can be used if no attributes are desired.}
 
 \item{placeholder}{The placeholder text to use when the output format is
 not HTML.}

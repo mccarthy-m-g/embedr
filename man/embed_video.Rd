@@ -9,7 +9,7 @@ embed_video(
   type = c("mp4", "webm", "ogg"),
   width = "320",
   height = "240",
-  attribute = c("controls", "autoplay", "loop", "muted", "preload"),
+  attribute = c("controls", "autoplay", "loop", "muted", "preload", "none"),
   thumbnail = NULL,
   placeholder = ""
 )
@@ -23,8 +23,8 @@ embed_video(
 
 \item{height}{The height of the video, in pixels.}
 
-\item{attribute}{A character vector specifying which attributes to use. An
-empty character vector "" can be used if no attributes are desired.}
+\item{attribute}{A character vector specifying which attributes to use.
+"none" can be used if no attributes are desired.}
 
 \item{placeholder}{The placeholder text to use when the output format is
 not HTML.}
