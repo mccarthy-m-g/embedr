@@ -37,8 +37,8 @@ is.local <- function(x) {
       stop("The files: ", paste(names(paths.exist), sep = ", ",
                                 collapse = ", "), " do not exist. Please use valid filepaths.")
     } else {
-      stop("The file: ", paste0(names(paths.exist)), " does not exist. Please
-           use a valid filepath.")
+      stop("The file: ", paste0(names(paths.exist)), " does not exist. ",
+      "Please use a valid filepath.")
     }
   } else all(file.exists(names(paths))) # return TRUE
 }
@@ -72,8 +72,8 @@ is.hosted <- function(x) {
       stop("The URLs: ", paste(names(paths.exist), sep = ", ",
             collapse = ", "), " do not exist. Please use valid URLs.")
     } else {
-      stop("The URL: ", paste0(names(paths.exist)), " does not exist. Please
-           use a valid URL.")
+      stop("The URL: ", paste0(names(paths.exist)), " does not exist. ",
+           "Please use a valid URL.")
     }
   } else all(RCurl::url.exists(names(paths))) # return TRUE
 }
