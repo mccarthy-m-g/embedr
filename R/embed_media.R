@@ -101,6 +101,7 @@ embed_audio <- function(src,
 #' @inheritParams embed_audio
 #' @param width The width of the video, in pixels.
 #' @param height The height of the video, in pixels.
+#' @param thumbnail A path to an image.
 #' @return If `knitr::is_html_output()` is `TRUE`, returns HTML `<video>` code.
 #'   If `knitr::is_html_output()` is `FALSE`, returns placeholder text.
 #' @note This function is supposed to be used in R code chunks or inline R code

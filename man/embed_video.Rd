@@ -27,6 +27,8 @@ embed_video(
 \item{attribute}{A character vector specifying which attributes to use.
 "none" can be used if no attributes are desired.}
 
+\item{thumbnail}{A path to an image.}
+
 \item{id}{A character string specifying a unique ID for the element.
 Can be used by CSS or JavaScript to perform certain tasks for
 the element with the specific ID.}
