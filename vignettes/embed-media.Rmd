@@ -7,12 +7,11 @@ vignette: >
   %\VignetteIndexEntry{embed-media}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
-resource_files:
-  - assets/audio.mp3
 ---
 
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
+  collapse = TRUE,
   comment = "#>"
 )
 ```
@@ -43,24 +42,49 @@ embed_audio() provides a standard way to embed audio in R Markdown documents whe
 For example, we can embed .mp3, .ogg, or .wav files with:
 
 ```{r}
+audio_mp3 <- "https://michaelmccarthy.netlify.app/files/embedr/audio-vignette.mp3"
+audio_ogg <- "https://michaelmccarthy.netlify.app/files/embedr/audio-vignette.ogg"
+audio_wav <- "https://michaelmccarthy.netlify.app/files/embedr/audio-vignette.wav"
 # embed .mp3 file
-#embed_audio("assets/audio.mp3")
+embed_audio(audio_mp3)
 # embed .ogg file
-#embed_audio("audio-vignette.ogg", type = "ogg")
+embed_audio(audio_ogg, type = "ogg")
 # embed .wav file
-#embed_audio("audio-vignette.wav", type = "wav")
+embed_audio(audio_wav, type = "wav")
 # embed multiple file types (for use in different browsers)
-#embed_audio(c("audio-vignette.mp3", "audio-vignette.ogg", "audio-vignette.wav"),
-#            type = c("mpeg", "ogg", "wav"))
-```
-
-```{r}
-#print(embed_audio("assets/audio.mp3"))
+embed_audio(c(audio_mp3, audio_ogg, audio_wav), type = c("mpeg", "ogg", "wav"))
 ```
 
 And control the behaviour of the `<audio>` element with:
 
 ```{r}
-# embed .mp3 file
-#embed_audio("https://raw.githubusercontent.com/mccarthy-m-g/musicians-compendium/master/audio/Clair%20De%20Lune.mp3", attribute = c("controls", "loop"))
+# embed looping .mp3 file
+embed_audio(audio_mp3, attribute = c("controls", "loop"))
 ```
+
+Placeholder text can be included in PDF versions of a document with:
+
+```{r}
+placeholder_text <- paste0("If you are reading the PDF version of this ",
+                           "vignette you will see this text instead of an",
+                           "audio player.")
+# embed .mp3 file with placeholder text for the PDF version
+embed_audio(audio_mp3, placeholder = placeholder_text)
+```
+
+## Embed video with `embed_video()`
+
+embed_video() provides a standard way to embed video in R Markdown documents when the output format is HTML, and to print placeholder text when the output format is not HTML. It shares most of its arguments with `embed_audio()`. Its unique arguments control the dimensions of the video player, and allow you to set a thumbnail for the video.
+
+Control the video player's dimensions with:
+
+```{r}
+
+```
+
+Add a thumbnail with:
+
+```{r}
+
+```
+
