@@ -79,12 +79,16 @@ embed_video() provides a standard way to embed video in R Markdown documents whe
 Control the video player's dimensions with:
 
 ```{r}
-
+video <- "https://michaelmccarthy.netlify.app/files/embedr/video-vignette.mp4"
+# embed .mp4 video
+embed_video(video, width = "256", height = "256")
 ```
 
 Add a thumbnail with:
 
 ```{r}
-
+thumbnail <- "https://michaelmccarthy.netlify.app/files/embedr/thumbnail-vignette.png"
+# embed .mp4 video
+embed_video(video, width = "256", height = "256", thumbnail = thumbnail)
 ```
 
