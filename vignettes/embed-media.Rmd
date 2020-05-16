@@ -1,0 +1,66 @@
+---
+title: "Using embedr"
+author: "[Michael McCarthy](https://michaelmccarthy.netlify.com)"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{embed-media}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+resource_files:
+  - assets/audio.mp3
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  comment = "#>"
+)
+```
+
+If you need to embed multimedia files in an R Markdown document you must either:
+
+- Write raw HTML code in the body of your document.
+- Call an R function that handles the HTML code for you.
+
+The embedr package uses the latter approach, making it fast and easy to embed audio or video in your R Markdown HTML documents:
+
+- By functionalizing the HTML `<audio>` and `<video>` elements, it makes your code more readable.
+- It provides error checking to ensure that your HTML code is correct and that your sources are valid.
+- It provides options to print placeholder text in R Markdown PDF documents so that you can distribute your document as HTML and PDF without creating seperate functions or documents.
+
+This document introduces you to embedr's `embed_audio()` and `embed_media()` functions, and shows you how to use them in R Markdown documents. 
+
+## Setup
+
+```{r setup}
+library(embedr)
+```
+
+## Embed audio with `embed_audio()`
+
+embed_audio() provides a standard way to embed audio in R Markdown documents when the output format is HTML, and to print placeholder text when the output format is not HTML. The first argument is the path or URL to the audio file. The remaining arguments allow you to specify the file type, audio player attributes, and placeholder text to be used when the output format is not HTML.
+
+For example, we can embed .mp3, .ogg, or .wav files with:
+
+```{r}
+# embed .mp3 file
+#embed_audio("assets/audio.mp3")
+# embed .ogg file
+#embed_audio("audio-vignette.ogg", type = "ogg")
+# embed .wav file
+#embed_audio("audio-vignette.wav", type = "wav")
+# embed multiple file types (for use in different browsers)
+#embed_audio(c("audio-vignette.mp3", "audio-vignette.ogg", "audio-vignette.wav"),
+#            type = c("mpeg", "ogg", "wav"))
+```
+
+```{r}
+#print(embed_audio("assets/audio.mp3"))
+```
+
+And control the behaviour of the `<audio>` element with:
+
+```{r}
+# embed .mp3 file
+#embed_audio("https://raw.githubusercontent.com/mccarthy-m-g/musicians-compendium/master/audio/Clair%20De%20Lune.mp3", attribute = c("controls", "loop"))
+```
