@@ -1,2 +1,7 @@
 ^.*\.Rproj$
 ^\.Rproj\.user$
+^\.mp3$
+^\.ogg$
+^\.wav$
+^\.mp4$
+^\.webm$
