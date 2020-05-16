@@ -2,11 +2,13 @@
 title: "Using embedr"
 author: "[Michael McCarthy](https://michaelmccarthy.netlify.com)"
 date: "`r Sys.Date()`"
-output: rmarkdown::html_vignette
+output:
+  pdf_document: default
+  rmarkdown::html_vignette:
 vignette: >
-  %\VignetteIndexEntry{embed-media}
-  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteIndexEntry{Using embedr}
   %\VignetteEncoding{UTF-8}
+  %\VignetteEngine{knitr::rmarkdown}
 ---
 
 ```{r, include = FALSE}
@@ -66,7 +68,7 @@ Placeholder text can be included in PDF versions of a document with:
 
 ```{r}
 placeholder_text <- paste0("If you are reading the PDF version of this ",
-                           "vignette you will see this text instead of an",
+                           "vignette you will see this text instead of an ",
                            "audio player.")
 # embed .mp3 file with placeholder text for the PDF version
 embed_audio(audio_mp3, placeholder = placeholder_text)
