@@ -2,9 +2,7 @@
 title: "Using embedr"
 author: "[Michael McCarthy](https://michaelmccarthy.netlify.com)"
 date: "`r Sys.Date()`"
-output:
-  pdf_document: default
-  rmarkdown::html_vignette:
+output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{Using embedr}
   %\VignetteEncoding{UTF-8}
