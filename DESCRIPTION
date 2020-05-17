@@ -1,6 +1,6 @@
 Package: embedr
 License: MIT + file LICENSE
-Version: 0.1.0
+Version: 1.0.0
 Type: Package
 Title: Embed Multimedia Files in HTML Documents
 Description: A wrapper for the `<audio>` and `<video>` HTML commands in R.
