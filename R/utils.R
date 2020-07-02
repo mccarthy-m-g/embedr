@@ -57,7 +57,7 @@ is.hosted <- function(x) {
   # remove paths with a URL scheme
   paths <- paths[!(paths %in% FALSE)]
   # check which paths exist
-  paths.exist <- !sapply(names(paths), httr::http_error) #RCurl::url.exists(names(paths))
+  paths.exist <- RCurl::url.exists(names(paths)) # !sapply(names(paths), httr::http_error)
   # name path.exists
   names(paths.exist) <- names(paths)
   # return result or error
@@ -75,7 +75,7 @@ is.hosted <- function(x) {
       stop("The URL: ", paste0(names(paths.exist)), " does not exist. ",
            "Please use a valid URL.")
     }
-  } else all(!sapply(names(paths), httr::http_error)) # all(RCurl::url.exists(names(paths))) # return TRUE
+  } else all(RCurl::url.exists(names(paths))) # all(!sapply(names(paths), httr::http_error)) # return TRUE
 }
 
 #' Match string for audio suffix
