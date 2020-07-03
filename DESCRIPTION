@@ -15,8 +15,7 @@ BugReports: https://github.com/mccarthy-m-g/embedr/issues
 Imports:
     htmltools,
     httr,
-    knitr,
-    RCurl
+    knitr
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
