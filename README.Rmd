@@ -1,20 +1,29 @@
+---
+output: github_document
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
 
 # embedr
 
 <!-- badges: start -->
-
-[![R build
-status](https://github.com/mccarthy-m-g/embedr/workflows/R-CMD-check/badge.svg)](https://github.com/mccarthy-m-g/embedr/actions)
+[![R build status](https://github.com/mccarthy-m-g/embedr/workflows/R-CMD-check/badge.svg)](https://github.com/mccarthy-m-g/embedr/actions)
 <!-- badges: end -->
-
+  
 An R package for embedding multimedia files in HTML documents.
 
 ## Installation
 
-embedr is not yet available on CRAN but you can install it from this
-repository:
+embedr is not yet available on CRAN but you can install it from this repository:
 
-``` r
+```r
 # Install devtools package if necessary
 if(!"devtools" %in% rownames(installed.packages())) install.packages("devtools")
 
@@ -41,7 +50,7 @@ devtools::install_github("mccarthy-m-g/embedr")
 
 Embed audio with `embed_audio()`:
 
-``` r
+```{r audio example, eval=FALSE}
 library(embedr)
 
 # embed .mp3 file
@@ -51,10 +60,11 @@ embed_audio(audio)
 
 Embed video with `embed_video()`:
 
-``` r
+```{r video example, eval=FALSE}
 library(embedr)
 
 # embed .mp4 video
 video <- "https://michaelmccarthy.netlify.app/files/embedr/video-vignette.mp4"
 embed_video(video, width = "256", height = "256")
 ```
+
