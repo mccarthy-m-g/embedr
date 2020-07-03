@@ -1,3 +1,14 @@
+#' Check if URL exists
+#'
+#' Given a character string, returns a logical vector indicating
+#' whether a request for a specific URL responds without error.
+#'
+#' @param x A character vector.
+#' @return `TRUE` if the URL responds without error, otherwise `FALSE`.
+url.exists <- function(x) {
+  tryCatch(!httr::http_error(x), error=function(e) FALSE)
+}
+
 #' Match string for URL prefix
 #'
 #' Given a character vector, returns a logical vector indicating
@@ -7,6 +18,7 @@
 is.url <- function(x) {
   grepl("www.|http://|https://|ftp://|file://", x)
 }
+
 
 #' Return strings without a URL scheme
 #'
@@ -57,7 +69,7 @@ is.hosted <- function(x) {
   # remove paths with a URL scheme
   paths <- paths[!(paths %in% FALSE)]
   # check which paths exist
-  paths.exist <- RCurl::url.exists(names(paths)) # !sapply(names(paths), httr::http_error)
+  paths.exist <- sapply(names(paths), url.exists)
   # name path.exists
   names(paths.exist) <- names(paths)
   # return result or error
@@ -75,7 +87,7 @@ is.hosted <- function(x) {
       stop("The URL: ", paste0(names(paths.exist)), " does not exist. ",
            "Please use a valid URL.")
     }
-  } else all(RCurl::url.exists(names(paths))) # all(!sapply(names(paths), httr::http_error)) # return TRUE
+  } else all(sapply(names(paths), url.exists)) # return TRUE
 }
 
 #' Match string for audio suffix
