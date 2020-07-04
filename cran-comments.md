@@ -3,7 +3,8 @@
 - OS X 10.15.5 (GitHub Actions Runner), R 4.0.2
 - Windows 10.0.17763 (GitHub Actions Runner), R 4.0.2
 - Ubuntu 16.04.6 (GitHub Actions Runner), R 4.0.2
-- win-builder (devel and release)
+- win-builder (release)
+- R-hub builder (devel and release)
 
 ## R CMD check results
 There were no ERRORS, WARNINGS, or NOTES.
