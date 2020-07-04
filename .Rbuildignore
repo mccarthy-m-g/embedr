@@ -1,5 +1,7 @@
 ^.*\.Rproj$
 ^\.Rproj\.user$
 ^cran-comments\.md$
+^LICENSE\.md$
 ^\.github$
 ^README\.Rmd$
+^CRAN-RELEASE$

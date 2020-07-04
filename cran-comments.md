@@ -1,3 +1,8 @@
+## Resubmission
+This is a resubmission. In this version I have:
+
+- Fixed the license to only ship with the CRAN template for the MIT license.
+
 ## Test environments
 - local OS X install, R 3.6.0
 - OS X 10.15.5 (GitHub Actions Runner), R 4.0.2
