@@ -25,7 +25,7 @@ The embedr package uses the latter approach, making it fast and easy to embed au
 
 - By functionalizing the HTML `<audio>` and `<video>` elements, it makes your code more readable.
 - It provides error checking to ensure that your HTML code is correct and that your sources are valid.
-- It provides options to print placeholder text in R Markdown PDF documents so that you can distribute your document as HTML and PDF without creating seperate functions or documents.
+- It provides options to print placeholder text in R Markdown PDF documents so that you can distribute your document as HTML and PDF without creating separate functions or documents.
 
 This document introduces you to embedr's `embed_audio()` and `embed_media()` functions, and shows you how to use them in R Markdown documents. 
 
