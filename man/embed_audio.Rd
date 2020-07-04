@@ -44,7 +44,7 @@ for conditional output that depends on the output format. For example, you
 may embed audio in an R Markdown document when the output format is HTML,
 and print placeholder text when the output format is LaTeX.
 
-The function determines output format using \code{\link[knitr:is_html_output]{knitr::is_html_output()}}. By
+The function determines output format using \code{\link[knitr:output_type]{knitr::is_html_output()}}. By
 default, these formats are considered as HTML formats: \code{c('markdown', 'epub', 'html', 'html5', 'revealjs', 's5', 'slideous', 'slidy')}.
 }
 \note{
