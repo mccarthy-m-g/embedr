@@ -1,6 +1,6 @@
 ---
 title: "Using embedr"
-author: "[Michael McCarthy](https://michaelmccarthy.netlify.com)"
+author: "[Michael McCarthy](https://michaelmccarthy.netlify.app)"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
