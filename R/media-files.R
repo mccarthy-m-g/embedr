@@ -4,7 +4,7 @@
 #'
 #'  - `mp3`: MP3 audio
 #'  - `mp4`: MP4 video
-#'  - `png` : PNG thumbnail
+#'  - `png`: PNG thumbnail
 #'
 #' @rdname media-files
 #' @name media-files

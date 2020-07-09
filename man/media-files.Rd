@@ -14,13 +14,13 @@ An object of class \code{character} of length 1.
 mp3
 }
 \description{
-Example media files included with embedr:
+Example media files included with embedr.
 }
 \details{
 \itemize{
 \item \code{mp3}: MP3 audio
 \item \code{mp4}: MP4 video
-\item \code{png} : PNG thumbnail
+\item \code{png}: PNG thumbnail
 }
 }
 \keyword{datasets}
