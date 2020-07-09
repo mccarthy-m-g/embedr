@@ -2,3 +2,6 @@
 
 export(embed_audio)
 export(embed_video)
+export(mp3)
+export(mp4)
+export(png)
