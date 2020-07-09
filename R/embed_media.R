@@ -39,6 +39,7 @@
 #' # To add placeholder text for non-HTML documents, use `placeholder`
 #' embed_audio(mp3, placeholder = "This is placeholder text.")
 #'
+#' \dontrun{
 #' # embed_audio() is intended to be used in R Markdown code chunks or inline
 #' # expressions. The following creates and knits an R Markdown document to
 #' # HTML and PDF in your current working directory for you to inspect:
@@ -51,6 +52,7 @@
 #'
 #' # Delete test files created by example code
 #' unlink(c("test.Rmd", "test.html", "test.pdf"))
+#' }
 #' @export
 embed_audio <- function(src,
                         type = c("mpeg", "ogg", "wav"),
@@ -142,6 +144,7 @@ embed_audio <- function(src,
 #' # To add placeholder text for non-HTML documents, use `placeholder`
 #' embed_video(mp4, placeholder = "This is placeholder text.")
 #'
+#' \dontrun{
 #' # embed_video() is intended to be used in R Markdown code chunks or inline
 #' # expressions. The following creates and knits an R Markdown document to
 #' # HTML and PDF in your current working directory for you to inspect:
@@ -154,6 +157,7 @@ embed_audio <- function(src,
 #'
 #' # Delete test files created by example code
 #' unlink(c("test.Rmd", "test.html", "test.pdf"))
+#' }
 #' @export
 embed_video <- function(src,
                         type = c("mp4", "webm", "ogg"),

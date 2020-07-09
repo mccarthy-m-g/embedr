@@ -74,6 +74,7 @@ embed_video(mp4, thumbnail = png)
 # To add placeholder text for non-HTML documents, use `placeholder`
 embed_video(mp4, placeholder = "This is placeholder text.")
 
+\dontrun{
 # embed_video() is intended to be used in R Markdown code chunks or inline
 # expressions. The following creates and knits an R Markdown document to
 # HTML and PDF in your current working directory for you to inspect:
@@ -86,4 +87,5 @@ render("test.Rmd", output_format = c('html_document', 'pdf_document'))
 
 # Delete test files created by example code
 unlink(c("test.Rmd", "test.html", "test.pdf"))
+}
 }
