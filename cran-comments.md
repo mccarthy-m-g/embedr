@@ -1,9 +1,11 @@
 ## Resubmission
 This is a resubmission. In this version I have:
 
-- Fixed the invalid author URL in `vignettes/embed-media.Rmd`.
+- Replaced backticks with undirected quotation marks in DESCRIPTION.
 
-- Attempted to reproduce 2 errors and 1 warning from CRAN teams' auto-check service r-devel-windows-ix86+x86_64 (arch 'i386' and 'x64') machine that occurred in my previous submission. I could not reproduce them in any of the test environments below, and believe they were false positives. 
+- Added small executable examples to exported functions.
+
+- Included small media files in `inst/media` that are used in the examples of exported functions to make them more readable. These media files are exported as objects by the newly created `media-files.R`.
 
 ## Test environments
 - local OS X install, R devel
