@@ -61,3 +61,29 @@ This function is supposed to be used in R code chunks or inline R code
 expressions. You are recommended to use forward slashes (/) as path
 separators instead of backslashes in the file paths.
 }
+\examples{
+# By default, embed_video() embeds a video element with playback controls
+embed_video(mp4)
+
+# To change the attributes of the video element, use `attribute`
+embed_video(mp4, attribute = c("controls", "loop"))
+
+# To add a thumbnail to the video element, use `thumbnail`
+embed_video(mp4, thumbnail = png)
+
+# To add placeholder text for non-HTML documents, use `placeholder`
+embed_video(mp4, placeholder = "This is placeholder text.")
+
+# embed_video() is intended to be used in R Markdown code chunks or inline
+# expressions. The following creates and knits an R Markdown document to
+# HTML and PDF in your current working directory for you to inspect:
+library(rmarkdown)
+writeLines(c("# Hello embedr!",
+"```{r embed-video, echo=TRUE}",
+"embed_video(mp4, thumbnail = png, placeholder = 'This is placeholder text.')",
+"```"), "test.Rmd")
+render("test.Rmd", output_format = c('html_document', 'pdf_document'))
+
+# Delete test files created by example code
+unlink(c("test.Rmd", "test.html", "test.pdf"))
+}

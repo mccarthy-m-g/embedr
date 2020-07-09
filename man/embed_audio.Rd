@@ -52,3 +52,26 @@ This function is supposed to be used in R code chunks or inline R code
 expressions. You are recommended to use forward slashes (/) as path
 separators instead of backslashes in the file paths.
 }
+\examples{
+# By default, embed_audio() embeds an audio element with playback controls
+embed_audio(mp3)
+
+# To change the attributes of the audio element, use `attribute`
+embed_audio(mp3, attribute = c("controls", "loop"))
+
+# To add placeholder text for non-HTML documents, use `placeholder`
+embed_audio(mp3, placeholder = "This is placeholder text.")
+
+# embed_audio() is intended to be used in R Markdown code chunks or inline
+# expressions. The following creates and knits an R Markdown document to
+# HTML and PDF in your current working directory for you to inspect:
+library(rmarkdown)
+writeLines(c("# Hello embedr!",
+"```{r embed-audio, echo=TRUE}",
+"embed_audio(mp3, placeholder = 'This is placeholder text.')",
+"```"), "test.Rmd")
+render("test.Rmd", output_format = c('html_document', 'pdf_document'))
+
+# Delete test files created by example code
+unlink(c("test.Rmd", "test.html", "test.pdf"))
+}
